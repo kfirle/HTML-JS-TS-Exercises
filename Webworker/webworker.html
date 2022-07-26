@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    min <input type="number" id="min"> <br/>
+    max <input type="number" id="max"> <br/>
+    <button onclick="a()">send</button> <br/>
+    <select id="s1" size="5"></select>
+    <script>
+        function a() {
+            let min = +document.getElementById("min").value;
+            let max = +document.getElementById("max").value;
+            let min_max_arr = [min,max];
+            let w = new Worker("webworker.js");
+            w.onmessage = function (d) {
+                let s1 = document.getElementById("s1");
+                for(let i=0; i<d.data.length; i++){
+                    let num = document.createElement("option");
+                    num.value = d.data[i];
+                    num.text = d.data[i];
+                    s1.appendChild(num);
+                }
+            }
+            w.postMessage(min_max_arr);
+        }
+</script>
+</body>
+</html>
