@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body onload="a()">
+    <canvas id="cnvs" style="width:50%; height:50%; border:2px solid green"></canvas>
+    <script>
+        let j=0;
+        let timeout = 1;
+        let i = new Image();
+        let c = document.getElementById("cnvs").getContext("2d");
+
+        function a() {
+            i.src = "raft.jpg";
+            i.onload = function () {
+                right();
+            }
+        }
+
+        function right() {
+            if(j == 220){
+                clearTimeout(t1);
+                t2 = setTimeout(left, timeout);
+            }
+            c.drawImage(i,j,40,100,100);
+            c.clearRect(j-1, 40, 1, 1);
+            j++;
+            t1= setTimeout(right, timeout);
+        }
+
+        function left(){
+            if(j==0){
+                clearTimeout(t2);
+                t1= setTimeout(right, timeout);
+            }
+            c.drawImage(i,j,40,100,100);
+            c.clearRect(j+1, 40, 1, 1);
+            j--;
+            t2 = setTimeout(left, timeout);
+        }
+    </script>
+</body>
+</html>
