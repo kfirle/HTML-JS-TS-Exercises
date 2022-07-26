@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="load()">
+    <h1>summary:</h1>
+    <p id="p1"></p>
+    <script>
+        function load(){
+            let cloth = sessionStorage.getItem("cloth"); 
+            let lunch = sessionStorage.getItem("lunch");
+            let p1 = document.getElementById("p1");
+            let cloth_arr = cloth.split(",");
+            let lunch_arr = lunch.split(",");
+            if(cloth != ""){
+                for(let i=0; i<cloth_arr.length-1; i++){
+                    p1.innerHTML += cloth_arr[i] + "<br/>";
+                }
+            }
+            if(lunch != ""){
+                for(let i=0; i<lunch_arr.length-1; i++){
+                    p1.innerHTML += lunch_arr[i] + "<br/>";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

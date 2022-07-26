@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>cloth:</h1>
+    <form action="page2.html">
+        <input name="cloth" type="checkbox" value="shoes"/> shoes <br/>
+        <input name="cloth" type="checkbox" value="shirt"/> shirt <br/>
+        <input name="cloth" type="checkbox" value="pants"/> pants <br/>
+        <button onclick="save1()">next</button>
+    </form>
+    <script>
+        function save1(){
+            let storage1="";
+            let cloth = document.getElementsByTagName("input");
+            for(let i=0; i<cloth.length;i++){
+                if(cloth[i].checked){
+                    storage1 += cloth[i].value + ",";
+                }
+            }
+            sessionStorage.setItem("cloth", storage1);
+        }
+    </script>
+</body>
+</html>
