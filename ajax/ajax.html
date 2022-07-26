@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="a()">Show Random Person</button>
+    <div style="text-align:center;" id="div1"></div>
+    <script>
+        function a(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://randomuser.me/api/");
+            xhr.onreadystatechange = function () {
+                let ret_text = xhr.responseText;
+                let parsed_text = JSON.parse(ret_text);
+                let firstname = parsed_text.results[0].name.first;
+                let lastname = parsed_text.results[0].name.last;
+                let pic = parsed_text.results[0].picture.large;
+                let img = "<img src='" + pic + "'/>";
+                let div1 = document.getElementById("div1");
+                div1.innerHTML = firstname + " " + lastname + "<br/>" + img;
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
