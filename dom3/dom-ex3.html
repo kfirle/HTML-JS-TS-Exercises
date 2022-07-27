@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mandatory{color: blue; background-color: azure;}
+    </style>
+</head>
+<body>
+    <form>
+        <select id="tagtype" required="required">
+            <option>h1</option>
+            <option>h2</option>
+            <option>h3</option>
+            <option>h4</option>
+            <option>h5</option>
+            <option>h6</option>
+            <option>div</option>
+            <option>p</option>
+            <option>button</option>
+        </select> 
+        <input type="color" required="required" id="textcolor" /> textcolor
+        <input type="color" required="required" id="bgcolor"/> bgcolor
+        <select id="alignment">
+            <option>left</option>
+            <option>center</option>
+            <option>right</option>
+        </select>
+        <input placeholder="Content" id="content"/>
+        <button type="button" onclick="save()"> Add Element </button>
+    </form>
+    <script src="dom-ex3.js"></script>
+</body>
+</html>
