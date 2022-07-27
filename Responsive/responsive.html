@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box; text-align: center; padding: 5px;}
+        
+        @media only screen and (min-width:400px){
+            .small{width: 100%;}
+        }
+        @media only screen and (min-width:600px){
+            .medium{width: 33%; float: left;}
+        }
+        @media only screen and (min-width:780px){
+            .big_half{width: 50%;}
+            .big_full{width: 100%;}
+        }
+    </style>
+</head>
+<body style="background-color:azure">
+    <h1 style="text-align:center;">The Hamburgerry</h1>
+    <p class="small medium big_half">
+        Menu:
+        aaa
+        bbb
+        ccc
+    </p>
+    <p class="small medium big_half">
+        Gerry founded the place in the early 00's
+        He decided to create the worst hamburger in the world
+        and hotdogs made of fimo    
+    </p>
+    <p>
+       <img class="small medium big_full" src="hamburgery.jpg"/>  
+    </p>
+</body>
+</html>
