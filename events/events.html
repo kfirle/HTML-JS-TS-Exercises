@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onbeforeunload="printCounter()">
+    <input id="my_text" placeholder="Insert Text" oninput="changeColor()" onblur="popup()"/>
+    <input class="mandatory" placeholder="First Name"/>
+    <input class="mandatory" placeholder="Last Name"/>
+    <input class="mandatory" placeholder="ID"/>
+    <button onclick="verify_text()">Send</button> <br/> <br/>
+    <img src="logo.png" width="200px" id="my_image" onmouseover="counterUp()"/>
+    <script>
+        let counter = 0;
+
+        function changeColor(){
+            let textbox = document.getElementById("my_text");
+            textbox.style.color="magenta";
+            textbox.oninput = () => {
+                textbox.style.color="lime";
+                textbox.oninput = changeColor;
+            }
+        }
+
+        function popup(){
+            let text1 = document.getElementById("my_text").value;
+            alert(text1);
+        }
+
+        function counterUp(){
+            counter++;
+        }
+
+        function printCounter(){
+            //alert("You hovered the pic " + counter + " times");
+            console.log("You hovered the pic " + counter + " times");
+            sleep(2000);
+        }
+
+        function verify_text(){
+            let input_array = document.getElementsByClassName("mandatory");
+            let is_valid = true;
+            for(let i=0; i<input_array.length; i++){
+                if(input_array[i].value == "" && is_valid){
+                    is_valid = false;
+                    alert("Please fill all fields");
+                }
+            }
+            if(is_valid){
+                let output ="";
+                for(let i=0; i<input_array.length-1; i++){
+                    output += input_array[i].value + " ";
+                }
+                output += input_array[input_array.length-1].value;
+                alert(output);
+            }
+        }
+
+        function sleep(milliseconds) {
+            const date = Date.now();
+            let currentDate = null;
+            do {
+                currentDate = Date.now();
+            } while (currentDate - date < milliseconds);
+        }
+
+    </script>
+</body>
+</html>
