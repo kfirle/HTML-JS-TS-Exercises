@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="autoDraw2()">
+    <input id="radius" type="number" min="0" placeholder="Insert radius size" />
+    <button onclick="draw()">Calculte</button> <br/> <br/>
+    <span id="result" style="border:2px solid red">Volume:</span> <br/> <br/>
+    <canvas id="cnvs" style="width:50%; height:50%; border:2px solid green"></canvas> <br/>
+    <button onclick="clearCanvas()">Clear</button>
+
+    <script>
+        function draw(){
+            let c = document.getElementById("cnvs");
+            let c1 = c.getContext("2d");
+            let span1 = document.getElementById("result");
+            let radius = +document.getElementById("radius").value;
+            if(!isNaN(radius)){
+                if(radius < c.width/2 && radius < c.height/2){
+                    let Volume = Math.pow(radius,3) * 4 * Math.PI / 3;
+                    span1.innerText = "Volume: " + Volume;
+                    c1.arc(c.width/2, c.height/2, radius, 0, 2 * Math.PI, true);
+                    c1.stroke();
+                }
+                else{
+                    alert("Radius is too big");
+                }
+            }
+            else{
+                alert("Radius given is not a number");
+            }
+        }
+
+        function clearCanvas(){
+            let c = document.getElementById("cnvs");
+            let c1 = c.getContext("2d");
+            let rect = c.getBoundingClientRect();
+            c1.clearRect(0, 0, c.width, c.height);
+            c1.beginPath();
+            let span1 = document.getElementById("result");
+            span1.innerText = "Volume:";
+        }
+
+        let r2=0;
+        function autoDraw2(){
+            let c = document.getElementById("cnvs");
+            let c1 = c.getContext("2d");
+            if(r2 >= Math.min(c.width/2, c.height/2)){
+                clearTimeout(t);
+                return;
+            }
+            c1.arc(c.width/2, c.height/2, r2, 0, 2 * Math.PI, true);
+            c1.stroke();
+            r2++;
+            c1.strokeStyle ="#FFFFFF";
+            c1.arc(c.width/2, c.height/2, r2, 0, 2 * Math.PI, true);
+            c1.stroke();
+            c1.strokeStyle ="#000000";
+            r2++;
+            t = setTimeout(autoDraw2, 100);
+        }
+    </script>
+</body>
+</html>
